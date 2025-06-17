@@ -1,6 +1,23 @@
-# Hello Gin
+# Queue Processing System
 
-A simple Go web application using the Gin framework.
+A Go application that demonstrates queue processing with different worker configurations. This project showcases:
+
+- Generic queue implementation with type safety
+- Multiple worker configurations (single vs multiple workers)
+- Concurrent message processing
+- Performance comparison between different worker setups
+- RESTful API for queue management
+
+## Features
+
+- **Generic Queue Processing**: Process any type of message with type safety
+- **Multiple Worker Configurations**:
+  - Single worker: Sequential processing
+  - Multiple workers: Parallel processing
+- **Thread-Safe Operations**: All queue operations are protected by mutex
+- **Graceful Shutdown**: Proper handling of system signals
+- **RESTful API**: Easy-to-use HTTP endpoints for queue management
+- **Error Handling**: Comprehensive error handling and recovery
 
 ## Prerequisites
 
