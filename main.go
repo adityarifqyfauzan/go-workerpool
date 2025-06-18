@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"runtime"
 	"strconv"
 	"syscall"
 	"time"
@@ -21,7 +22,7 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	// create two different processor configurations
+	// create two different processor configurati ons
 	processors := make([]*processor.Processor[usecase.Message], 2)
 
 	// processor 1: single worker
@@ -57,6 +58,10 @@ func main() {
 	// hello world endpoint
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "Hello World!"})
+	})
+
+	r.GET("/goroutines", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"goroutines": runtime.NumGoroutine()})
 	})
 
 	r.GET("/enqueue/:processor", func(c *gin.Context) {
